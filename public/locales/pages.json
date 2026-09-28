@@ -1,0 +1,21 @@
+{
+  "pages": {
+    "en": {
+      "Diese Woche": "This Week",
+      "Diese Woche noch keine Nachrichten.": "No messages this week.",
+      "Diese Woche sind noch keine Nachrichten eingegangen.": "No messages received this week.",
+      "Gesamt": "Total",
+      "Grußnachrichten": "Greeting Messages",
+      "Heute": "Today",
+      "Heute noch keine Nachrichten.": "No messages today.",
+      "Nachricht schreiben": "Write Message",
+      "Nachrichten pro Monat": "Messages per Month",
+      "Neue Nachricht": "New Message",
+      "Noch keine Grußnachrichten — erstelle die erste!": "No greeting messages yet — create the first!",
+      "Noch keine Grußnachrichten — sei der Erste!": "No greeting messages yet — be the first!",
+      "Unbekannt": "Unknown",
+      "{0} haben diese Woche geschrieben.": "{0} have written this week."
+    }
+  },
+  "v": 1
+}

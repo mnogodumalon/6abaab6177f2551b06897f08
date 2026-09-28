@@ -1,0 +1,10 @@
+{
+  "entities": {
+    "Grußnachricht": {
+      "placeholders_set": 4,
+      "defaults_keys": ["datum"],
+      "computed_keys": [],
+      "reason": "Reine Stammdaten — vorname, nachname, nachricht, datum. Keine Lookup-/Applookup-Felder, keine Number-Felder, keine berechenbaren Größen."
+    }
+  }
+}
