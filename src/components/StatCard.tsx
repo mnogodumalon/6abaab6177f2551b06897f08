@@ -219,10 +219,15 @@ export function StatCardRow({ children, layout = 'row', className }: { children:
       setEdge(prev => (prev.left === left && prev.right === right ? prev : { left, right }));
     };
     measure();
-    const ro = new ResizeObserver(measure);
+    let raf: number | null = null;
+    const rafMeasure = () => {
+      if (raf != null) return;
+      raf = window.requestAnimationFrame(() => { raf = null; measure(); });
+    };
+    const ro = new ResizeObserver(rafMeasure);
     ro.observe(el);
-    window.addEventListener('resize', measure);
-    return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
+    window.addEventListener('resize', rafMeasure);
+    return () => { ro.disconnect(); window.removeEventListener('resize', rafMeasure); if (raf != null) window.cancelAnimationFrame(raf); };
   }, [layout]);
   const bleed = edge.left > 0 || edge.right > 0;
   if (layout === 'grid') {

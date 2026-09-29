@@ -238,10 +238,15 @@ export function useNarrowContainer(threshold = 480) {
       setEdge(prev => (prev.left === left && prev.right === right ? prev : { left, right }));
     };
     measure();
-    const ro = new ResizeObserver(measure);
+    let raf: number | null = null;
+    const rafMeasure = () => {
+      if (raf != null) return;
+      raf = window.requestAnimationFrame(() => { raf = null; measure(); });
+    };
+    const ro = new ResizeObserver(rafMeasure);
     ro.observe(el);
-    window.addEventListener('resize', measure);
-    return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
+    window.addEventListener('resize', rafMeasure);
+    return () => { ro.disconnect(); window.removeEventListener('resize', rafMeasure); if (raf != null) window.cancelAnimationFrame(raf); };
   }, [threshold]);
   // `width` = the root's CONTENT width — the reliable base for column sizing
   // (a scroller's clientWidth is a moving target while bleed/padding mount).
